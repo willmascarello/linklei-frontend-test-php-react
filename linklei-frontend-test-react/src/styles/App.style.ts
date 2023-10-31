@@ -2,6 +2,8 @@ import styled from "styled-components";
 import theme from "./theme.constants";
 
 export const AppStyled = styled.div`
+  background-color: #0e0e0e;
+
   .App {
     text-align: center;
   }

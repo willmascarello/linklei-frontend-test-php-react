@@ -1,5 +1,6 @@
 import React from "react";
 import { Header } from "./components/header/header";
+import { CreatePost } from "./components/create-post/create-post";
 import logo from "./logo.svg";
 import { AppStyled } from "./styles/App.style";
 
@@ -9,6 +10,7 @@ function App() {
   return (
     <AppStyled className="App">
       <Header />
+      <CreatePost />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

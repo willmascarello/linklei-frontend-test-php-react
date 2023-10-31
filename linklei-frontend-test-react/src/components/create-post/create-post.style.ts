@@ -2,23 +2,24 @@ import styled from "styled-components";
 import theme from "../../styles/theme.constants";
 
 export const CreatePostStyled = styled.div`
-  width: 100vw;
-  height: 9rem;
-  border-bottom: 1px solid var(--color-primary, #2d64d1);
+  position: relative;
+  width: calc(100% - 2rem);
+  height: 4.5rem;
   background: ${theme.colors.dark};
-  position: fixed;
+  margin: 1rem;
+  margin-top: calc(9rem + 1rem);
 
-  .logo {
-    width: max-content;
-    height: 100%;
-    cursor: pointer;
+  text-align: center;
 
-    img {
-      display: block;
-      height: 100%;
-      padding: 0 2rem 0 4rem;
-      margin-top: auto;
-      margin-bottom: auto;
-    }
+  button {
+    background-color: ${theme.colors.primary};
+    border: none;
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 `;

@@ -23,7 +23,7 @@ export const theme = {
   colors: {
     primary: "#2D64D1",
     background: "#0E0E0E",
-    dark: "#151515",
+    dark: "#121318",
     light: "#DEDEDE",
   },
   transition: "0.35s",

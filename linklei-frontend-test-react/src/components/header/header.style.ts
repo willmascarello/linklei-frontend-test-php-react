@@ -4,9 +4,10 @@ import theme from "../../styles/theme.constants";
 export const HeaderStyled = styled.div`
   width: 100vw;
   height: 9rem;
-  border-bottom: 1px solid var(--color-primary, #2d64d1);
+  border-bottom: 1px solid ${theme.colors.primary};
   background: ${theme.colors.dark};
   position: fixed;
+  top: 0;
 
   .logo {
     width: max-content;

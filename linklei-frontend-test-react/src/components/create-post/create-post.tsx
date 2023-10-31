@@ -1,17 +1,11 @@
+import { Button } from "react-bootstrap";
 import { CreatePostStyled } from "./create-post.style";
 
-export function Header() {
+export function CreatePost() {
   return (
     <CreatePostStyled>
-      <a href="#">
-        <img
-          width="64px"
-          height="55px"
-          className="logo"
-          src="logo.svg"
-          alt="linklei"
-        />
-      </a>
+      <Button variant="primary">Criar post</Button>{" "}
+      {/* TODO: add onClick, open modal */}
     </CreatePostStyled>
   );
 }
