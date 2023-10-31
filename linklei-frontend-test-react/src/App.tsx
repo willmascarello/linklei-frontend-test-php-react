@@ -1,12 +1,14 @@
 import React from "react";
+import { Header } from "./components/header/header";
 import logo from "./logo.svg";
-import "./App.css";
+import { AppStyled } from "./styles/App.style";
 
 function App() {
   let version = React.version;
 
   return (
-    <div className="App">
+    <AppStyled className="App">
+      <Header />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -22,7 +24,7 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </AppStyled>
   );
 }
 
