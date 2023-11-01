@@ -1,31 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "./components/header/header";
 import { CreatePost } from "./components/create-post/create-post";
-import logo from "./logo.svg";
+import { Post } from "./components/post/post";
 import { AppStyled } from "./styles/App.style";
+import { postsSuccessResponseMock } from "./requests/get-posts.mock";
 
 function App() {
-  let version = React.version;
+  const [data] = useState(postsSuccessResponseMock.data);
 
   return (
-    <AppStyled className="App">
+    <AppStyled className="app">
       <Header />
       <CreatePost />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>React Version: {version}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className="feed">
+        {data
+          ? data.map((el, i) => {
+              return <Post {...el} key={i} />;
+            })
+          : "Ainda não há posts publicados"}
+      </div>
     </AppStyled>
   );
 }

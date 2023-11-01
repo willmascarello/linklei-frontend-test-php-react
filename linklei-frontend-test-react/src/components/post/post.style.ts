@@ -2,23 +2,38 @@ import styled from "styled-components";
 import theme from "../../styles/theme.constants";
 
 export const PostStyled = styled.div`
-  width: 100vw;
-  height: 9rem;
-  border-bottom: 1px solid var(--color-primary, #2d64d1);
+  width: 50vw;
   background: ${theme.colors.dark};
-  position: fixed;
+  border-radius: 5px;
+  border: 1px solid var(--color-black, #000);
 
-  .logo {
-    width: max-content;
-    height: 100%;
-    cursor: pointer;
+  margin-bottom: 3rem;
+  padding: 1rem;
 
-    img {
-      display: block;
-      height: 100%;
-      padding: 0 2rem 0 4rem;
-      margin-top: auto;
-      margin-bottom: auto;
+  .identify {
+    display: flex;
+
+    .photo {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+
+        margin-right: 1rem;
+      }
+
+      p {
+        font-size: 14px;
+      }
+  }
+
+  .type {
+    display: flex;
+
+    p {
+      margin-left: 0.5rem;
+      text-transform: capitalize;
     }
+  }
+  
   }
 `;

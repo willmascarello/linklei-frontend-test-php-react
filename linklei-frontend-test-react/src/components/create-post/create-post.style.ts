@@ -7,7 +7,9 @@ export const CreatePostStyled = styled.div`
   height: 4.5rem;
   background: ${theme.colors.dark};
   margin: 1rem;
+  margin-bottom: 3rem;
   margin-top: calc(9rem + 1rem);
+  border-radius: 5px;
 
   text-align: center;
 

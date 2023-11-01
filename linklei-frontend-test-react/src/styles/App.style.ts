@@ -2,15 +2,11 @@ import styled from "styled-components";
 import theme from "./theme.constants";
 
 export const AppStyled = styled.div`
-  background-color: #0e0e0e;
+  background-color: ${theme.colors.background};
+  color: ${theme.colors.light};
 
-  .App {
+  .app {
     text-align: center;
-  }
-
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -19,27 +15,10 @@ export const AppStyled = styled.div`
     }
   }
 
-  .App-header {
-    background-color: ${theme.colors.background};
-    min-height: 100vh;
+  .feed {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
-
-  .App-link {
-    color: ${theme.colors.primary};
-  }
-
-  @keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
   }
 `;
