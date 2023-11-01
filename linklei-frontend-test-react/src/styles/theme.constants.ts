@@ -24,6 +24,7 @@ export const theme = {
     primary: "#2D64D1",
     background: "#0E0E0E",
     dark: "#121318",
+    black: "#000000",
     light: "#DEDEDE",
   },
   transition: "0.35s",

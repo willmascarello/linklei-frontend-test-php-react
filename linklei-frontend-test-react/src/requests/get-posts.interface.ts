@@ -5,6 +5,7 @@ export interface IPosts {
 }
 
 export interface IPost {
+  id: string;
   user: string;
   date: string;
   type: string;

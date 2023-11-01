@@ -5,7 +5,7 @@ export const PostStyled = styled.div`
   width: 50vw;
   background: ${theme.colors.dark};
   border-radius: 5px;
-  border: 1px solid var(--color-black, #000);
+  border: 1px solid ${theme.colors.black};
 
   margin-bottom: 3rem;
   padding: 1rem;
@@ -21,9 +21,52 @@ export const PostStyled = styled.div`
         margin-right: 1rem;
       }
 
-      p {
-        font-size: 14px;
+      .head {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .date {
+          font-size: 14px;
+        }
       }
+  }
+
+  .option {
+    position: relative;
+
+    button {   
+      background-color: transparent;
+      color: ${theme.colors.light};
+      border: none;
+    }
+    .openOption {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .optionModal {
+      position: absolute;
+      padding: 1rem;
+      /* width: 8rem; */
+      background: ${theme.colors.dark};
+      border-radius: 5px;
+      border: 1px solid ${theme.colors.black};
+  
+      button {
+        display: flex;
+        margin-right: 1rem;
+
+        svg {
+          margin-right: 0.5rem;
+        }
+      }
+
+      button:first-child {
+        margin-bottom: 1rem;
+      }
+
+    }
   }
 
   .type {
