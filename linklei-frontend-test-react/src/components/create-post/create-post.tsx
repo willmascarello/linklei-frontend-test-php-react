@@ -1,6 +1,7 @@
-import { Button, Form, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { CreatePostStyled } from "./create-post.style";
 import { useState } from "react";
+import { ModalCreateEditPostStyled } from "components/modal-create-edit-post/modal-create-edit-post";
 
 export function CreatePost() {
   const [show, setShow] = useState(false);
@@ -16,36 +17,8 @@ export function CreatePost() {
         </Button>
       </CreatePostStyled>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Criar post</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="name">
-              <Form.Control type="name" placeholder="Autor do post" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="type">
-              <Form.Select aria-label="Default select example">
-                <option disabled selected>
-                  Selecione o tipo do post
-                </option>
-                <option value="post">Post</option>
-                <option value="artigo">Artigo</option>
-                <option value="grupo">Grupo</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="textarea">
-              <Form.Control as="textarea" rows={3} />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Publicar
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {/* TODO: No overload matches this call. */}
+      {/* <ModalCreateEditPostStyled show={show} handleClose={handleClose} /> */}
     </>
   );
 }
