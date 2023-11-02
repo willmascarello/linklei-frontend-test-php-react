@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { CreatePostStyled } from "./create-post.style";
 import { useState } from "react";
-import { ModalCreateEditPostStyled } from "components/modal-create-edit-post/modal-create-edit-post";
+import ModalCreateEditPost from "components/modal-create-edit-post/modal-create-edit-post";
 
 export function CreatePost() {
   const [show, setShow] = useState(false);
@@ -16,9 +16,7 @@ export function CreatePost() {
           Criar post
         </Button>
       </CreatePostStyled>
-
-      {/* TODO: No overload matches this call. */}
-      {/* <ModalCreateEditPostStyled show={show} handleClose={handleClose} /> */}
+      <ModalCreateEditPost show={show} handleClose={handleClose} />
     </>
   );
 }

@@ -1,10 +1,15 @@
 import { Button, Form, Modal } from "react-bootstrap";
-import React, { useEffect, useState } from "react";
-import { ModalCreateEditPostStyled } from "./modal-create-edit-post";
+import React, { useEffect } from "react";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
+import { ModalCreateEditPostStyled } from "./modal-create-edit-post.style";
 
-export function ModalCreateEditPost(show: boolean, handleClose: () => void) {
+interface IModalCreateEditPostProps {
+  show: boolean;
+  handleClose: () => void;
+}
+
+export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
   const { quill, quillRef } = useQuill();
 
   console.log("ver-- quill:", quill);
@@ -20,7 +25,7 @@ export function ModalCreateEditPost(show: boolean, handleClose: () => void) {
 
   return (
     <ModalCreateEditPostStyled>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Criar post</Modal.Title>
         </Modal.Header>
@@ -45,7 +50,7 @@ export function ModalCreateEditPost(show: boolean, handleClose: () => void) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={props.handleClose}>
             Publicar
           </Button>
         </Modal.Footer>
