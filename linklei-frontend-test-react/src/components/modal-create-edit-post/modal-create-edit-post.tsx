@@ -1,8 +1,9 @@
 import { Button, Form, Modal } from "react-bootstrap";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import { ModalCreateEditPostStyled } from "./modal-create-edit-post.style";
+import axios from "axios";
 
 interface IModalCreateEditPostProps {
   show: boolean;
@@ -10,18 +11,46 @@ interface IModalCreateEditPostProps {
 }
 
 export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
+  const [inputs, setInputs] = useState({});
+
   const { quill, quillRef } = useQuill();
 
-  console.log("ver-- quill:", quill);
-  console.log("ver-- quillRef:", quillRef);
+  // uncomment to debug quill
+  // console.log("ver-- quill:", quill);
+  // console.log("ver-- quillRef:", quillRef);
 
   useEffect(() => {
     if (quill) {
       quill.on("text-change", () => {
-        console.log(quill.root.innerHTML);
+        // uncomment to debug quill
+        // console.log(quill.root.innerHTML);
+
+        setInputs((values) => ({ ...values, text: quill.root.innerHTML }));
       });
     }
   }, [quill]);
+
+  const handleChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const name = event.currentTarget.name;
+    const value = event.currentTarget.value;
+
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    console.log("ver-- inputs:", inputs);
+    axios.post(
+      "http://localhost/linklei-frontend-test-php-react/linklei-frontend-test-php/post/save",
+      inputs
+    );
+    // if save props.handleClose
+  };
 
   return (
     <ModalCreateEditPostStyled>
@@ -30,12 +59,25 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
           <Modal.Title>Criar post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={(e) => handleSubmit(e)}>
             <Form.Group className="mb-3" controlId="name">
-              <Form.Control type="name" placeholder="Autor do post" />
+              <Form.Control
+                name="name"
+                required
+                onChange={(e) =>
+                  handleChange(e as React.ChangeEvent<HTMLInputElement>)
+                }
+                placeholder="Autor do post"
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="type">
-              <Form.Select aria-label="Default select example">
+              <Form.Select
+                name="type"
+                required
+                onChange={(e) =>
+                  handleChange(e as React.ChangeEvent<HTMLSelectElement>)
+                }
+              >
                 <option disabled selected>
                   Selecione o tipo do post
                 </option>
@@ -48,13 +90,11 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
             <Form.Group className="mb-3" controlId="textareaedit">
               <div ref={quillRef} />
             </Form.Group>
+            <Button variant="primary" className="float-end" type="submit">
+              Publicar
+            </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={props.handleClose}>
-            Publicar
-          </Button>
-        </Modal.Footer>
       </Modal>
     </ModalCreateEditPostStyled>
   );
