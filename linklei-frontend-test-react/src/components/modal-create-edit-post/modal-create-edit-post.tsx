@@ -44,6 +44,7 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
                 <option value="grupo">Grupo</option>
               </Form.Select>
             </Form.Group>
+            {/* FIXME: The quill appears only the first time it opens the modal */}
             <Form.Group className="mb-3" controlId="textareaedit">
               <div ref={quillRef} />
             </Form.Group>
