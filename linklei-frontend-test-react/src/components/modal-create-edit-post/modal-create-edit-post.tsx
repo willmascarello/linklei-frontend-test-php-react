@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useQuill } from "react-quilljs";
 import "quill/dist/quill.snow.css";
 import { ModalCreateEditPostStyled } from "./modal-create-edit-post.style";
-import axios from "axios";
+import { postPost } from "../../requests/post-posts.service";
+import { IPostsParams } from "../../requests/posts.interface";
 
 interface IModalCreateEditPostProps {
   show: boolean;
@@ -11,7 +12,7 @@ interface IModalCreateEditPostProps {
 }
 
 export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({} as IPostsParams);
 
   const { quill, quillRef } = useQuill();
 
@@ -45,10 +46,11 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
     event.preventDefault();
 
     console.log("ver-- inputs:", inputs);
-    axios.post(
-      "http://localhost/linklei-frontend-test-php-react/linklei-frontend-test-php/post/save",
-      inputs
-    );
+    postPost(inputs); // import to request
+    // axios.post(
+    //   "http://localhost/linklei-frontend-test-php-react/linklei-frontend-test-php/post/save",
+    //   inputs
+    // );
     // if save props.handleClose
   };
 

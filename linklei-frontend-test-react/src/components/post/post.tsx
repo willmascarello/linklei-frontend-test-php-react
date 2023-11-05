@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PostStyled } from "./post.style";
-import { IPost } from "../../requests/get-posts.interface";
+import { IPost } from "../../requests/posts.interface";
 import {
   MoreHoriz,
   Edit,

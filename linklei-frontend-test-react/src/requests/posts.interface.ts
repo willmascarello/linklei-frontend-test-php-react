@@ -1,4 +1,4 @@
-export interface IPosts {
+export interface IpostsResponseSuccess {
   statusCode: number;
   message: string;
   data: Array<IPost>;
@@ -10,4 +10,10 @@ export interface IPost {
   date: string;
   type: string;
   text: string;
+}
+
+export interface IPostsParams {
+  user: string;
+  type: string;
+  text?: string;
 }

@@ -1,6 +1,6 @@
-import { IPosts } from "./get-posts.interface";
+import { IpostsResponseSuccess } from "./posts.interface";
 
-export const postsSuccessResponseMock: IPosts = {
+export const postsSuccessResponseMock: IpostsResponseSuccess = {
   statusCode: 200,
   message: "success",
   data: [
