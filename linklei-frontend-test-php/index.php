@@ -9,7 +9,14 @@ $conn = $objDb->connect();
 
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
-  case "POST";
+  case "GET":
+    $sql = "SELECT * FROM posts ORDER BY updated_at DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($posts);
+    break;
+  case "POST":
     $payload = json_decode(file_get_contents('php://input'));
     $sql = "INSERT INTO posts (id,	user, type,	text,	created_at,	updated_at) VALUES (null, :name, :type, :text,	:created_at,	:updated_at)";
     $stmt = $conn->prepare($sql);

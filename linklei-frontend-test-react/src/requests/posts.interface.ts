@@ -7,7 +7,7 @@ export interface IpostsResponseSuccess {
 export interface IPost {
   id: string;
   user: string;
-  date: string;
+  updated_at: string;
   type: string;
   text: string;
 }

@@ -30,7 +30,12 @@ export function Post(postData: IPost) {
     );
   }
 
-  function renderSwitch(param: string) {
+  function formatDatePost(date: string) {
+    // TODO: 2023-11-05 19:58:35 to Publicado em 5 de novembro de 2023 às 19:58
+    return date;
+  }
+
+  function renderTypePost(param: string) {
     switch (param) {
       case "post":
         return <MenuBook />;
@@ -47,9 +52,15 @@ export function Post(postData: IPost) {
     return (
       <div>
         <p>
-          {readMoreOpen
-            ? postData.text
-            : postData.text.substring(0, 500) + "..."}
+          {readMoreOpen ? (
+            <div dangerouslySetInnerHTML={{ __html: postData.text }}></div>
+          ) : (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: postData.text.substring(0, 500) + "...",
+              }}
+            ></div>
+          )}
         </p>
         {readMoreOpen ? (
           <Button
@@ -80,7 +91,7 @@ export function Post(postData: IPost) {
         <div className="head">
           <div>
             <strong>{postData.user}</strong>
-            <p className="date">{postData.date}</p>
+            <p className="date">{formatDatePost(postData.updated_at)}</p>
           </div>
           <div className="option">
             <button
@@ -94,11 +105,17 @@ export function Post(postData: IPost) {
         </div>
       </div>
       <div className="type">
-        {renderSwitch(postData.type)}
+        {renderTypePost(postData.type)}
         <p>{postData.type}</p>
       </div>
       <div className="text">
-        <p>{bigText ? renderBigText() : postData.text}</p>
+        <p>
+          {bigText ? (
+            renderBigText()
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: postData.text }}></div>
+          )}
+        </p>
       </div>
     </PostStyled>
   );

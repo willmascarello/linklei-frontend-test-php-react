@@ -5,7 +5,7 @@ import { IpostsResponseSuccess } from "./posts.interface";
 import { postsSuccessResponseMock } from "./get-posts.mock";
 
 const getPostPATH =
-  "http://localhost/linklei-frontend-test-php-react/linklei-frontend-test-php/post/save";
+  "http://localhost/linklei-frontend-test-php-react/linklei-frontend-test-php/post/posts";
 
 // MOCK START
 // true to use mock
@@ -27,6 +27,6 @@ if (mock) {
 
 // MOCK END
 
-export const getPost = (): Promise<AxiosResponse<IpostsResponseSuccess>> => {
+export const getPost = (): Promise<IpostsResponseSuccess> => {
   return axios.get(getPostPATH);
 };
