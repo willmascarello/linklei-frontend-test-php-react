@@ -11,7 +11,9 @@ $conn = $objDb->connect();
 $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
   case "GET":
-    $sql = "SELECT * FROM posts ORDER BY updated_at DESC";
+    $path = explode('/', $_SERVER['REQUEST_URI']);
+    $limit = $path[4];
+    $sql = "SELECT * FROM posts ORDER BY updated_at DESC LIMIT $limit";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
