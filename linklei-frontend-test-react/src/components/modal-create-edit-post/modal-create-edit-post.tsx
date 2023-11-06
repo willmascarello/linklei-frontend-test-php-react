@@ -96,7 +96,7 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
     <>
       <ToastContainer />
       <ModalCreateEditPostStyled>
-        <Modal show={props.show} onHide={props.handleClose}>
+        <Modal show={props.show} size="lg" onHide={props.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>
               {props.postInfo ? "Editar post" : "Criar post"}
@@ -104,18 +104,6 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
           </Modal.Header>
           <Modal.Body>
             <Form onSubmit={(e) => handleSubmit(e)}>
-              {props.postInfo?.id ? (
-                <Form.Group className="mb-3" controlId="id" hidden>
-                  <Form.Control
-                    name="id"
-                    defaultValue={props.postInfo?.id}
-                    disabled
-                  />
-                </Form.Group>
-              ) : (
-                ""
-              )}
-
               <Form.Group className="mb-3" controlId="name">
                 <Form.Control
                   name="name"

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PostStyled } from "./post.style";
-import { IPost } from "../../requests/posts.interface";
+import { IPost, IPutParams } from "../../requests/posts.interface";
 import {
   MoreHoriz,
   Edit,
@@ -11,12 +11,16 @@ import {
 } from "@mui/icons-material";
 import { Button } from "react-bootstrap";
 import ModalCreateEditPost from "components/modal-create-edit-post/modal-create-edit-post";
+import ModalDeletePostConfirmation from "components/modal-delete-post-confirmation/modal-delete-post-confirmation";
 
 export function Post(postData: IPost) {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const handleCloseDeleteConfirmation = () => setShowDeleteConfirmation(false);
+  const handleShowDeleteConfirmation = () => setShowDeleteConfirmation(true);
 
   const [openOptions, setOpenOptions] = useState(false);
 
@@ -29,7 +33,7 @@ export function Post(postData: IPost) {
         <button className="edit" onClick={handleShow}>
           <Edit /> Editar
         </button>
-        <button className="delete">
+        <button className="delete" onClick={handleShowDeleteConfirmation}>
           <DeleteOutlineOutlined /> Excluir
         </button>
       </div>
@@ -138,6 +142,11 @@ export function Post(postData: IPost) {
       <ModalCreateEditPost
         show={show}
         handleClose={handleClose}
+        postInfo={postData}
+      />
+      <ModalDeletePostConfirmation
+        show={showDeleteConfirmation}
+        handleClose={handleCloseDeleteConfirmation}
         postInfo={postData}
       />
     </>

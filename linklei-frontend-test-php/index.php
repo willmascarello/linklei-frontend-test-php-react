@@ -51,5 +51,17 @@ switch($method) {
     }
     echo json_encode($response);
     break;
+  case "DELETE":
+    $sql = "DELETE FROM posts WHERE id = :id";
+    $path = explode('/', $_SERVER['REQUEST_URI']);
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':id', $path[4]);
+    if($stmt->execute()) {
+      $response = ['status' => 204, 'message' => 'Post excluido com sucesso.'];
+    } else {
+      $response = ['status' => 0, 'message' => 'Falha ao excluir o Post.'];
+    }
+    echo json_encode($response);
+    break;
 }
 ?>

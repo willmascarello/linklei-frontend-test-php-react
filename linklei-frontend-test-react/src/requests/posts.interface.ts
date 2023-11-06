@@ -5,7 +5,7 @@ export interface IpostsResponseSuccess {
 }
 
 export interface IPost {
-  id: string;
+  id: number;
   name: string;
   updated_at: string;
   type: string;
@@ -20,6 +20,7 @@ export interface IPostsParams {
 export interface IPutParams {
   id: number;
   name: string;
+  updated_at: string;
   type: string;
-  text?: string;
+  text: string;
 }
