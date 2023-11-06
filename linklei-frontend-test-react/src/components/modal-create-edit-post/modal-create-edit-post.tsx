@@ -31,7 +31,16 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
     }
   }, [props.postInfo]);
 
-  const { quill, quillRef } = useQuill();
+  const theme = "snow";
+
+  const modules = {
+    toolbar: [["bold", "italic", "underline", "strike", "image"]],
+  };
+
+  const { quill, quillRef } = useQuill({
+    theme,
+    modules,
+  });
 
   // uncomment to debug quill
   // console.log("ver-- quill:", quill);
@@ -64,6 +73,10 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    console.log(
+      "ver-- props.postInfo?.type.length:",
+      props.postInfo?.type !== undefined
+    );
 
     if (props.postInfo) {
       putPost(inputs as IPutParams)
@@ -122,28 +135,16 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
                   onChange={(e) =>
                     handleChange(e as React.ChangeEvent<HTMLSelectElement>)
                   }
+                  defaultValue={
+                    props.postInfo?.type ? props.postInfo?.type : ""
+                  }
                 >
-                  <option disabled selected>
+                  <option value="" disabled>
                     Selecione o tipo do post
                   </option>
-                  <option
-                    selected={props.postInfo?.type === "post"}
-                    value="post"
-                  >
-                    Post
-                  </option>
-                  <option
-                    selected={props.postInfo?.type === "artigo"}
-                    value="artigo"
-                  >
-                    Artigo
-                  </option>
-                  <option
-                    selected={props.postInfo?.type === "grupo"}
-                    value="grupo"
-                  >
-                    Grupo
-                  </option>
+                  <option value="post">Post</option>
+                  <option value="artigo">Artigo</option>
+                  <option value="grupo">Grupo</option>
                 </Form.Select>
               </Form.Group>
               {/* FIXME: The quill appears only the first time it opens the modal */}
