@@ -10,8 +10,14 @@ import {
   Group,
 } from "@mui/icons-material";
 import { Button } from "react-bootstrap";
+import ModalCreateEditPost from "components/modal-create-edit-post/modal-create-edit-post";
 
 export function Post(postData: IPost) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [openOptions, setOpenOptions] = useState(false);
 
   const bigText = postData.text.length > 500;
@@ -20,7 +26,7 @@ export function Post(postData: IPost) {
   function renderOptions() {
     return (
       <div className="optionModal">
-        <button className="edit">
+        <button className="edit" onClick={handleShow}>
           <Edit /> Editar
         </button>
         <button className="delete">
@@ -94,39 +100,46 @@ export function Post(postData: IPost) {
   }
 
   return (
-    <PostStyled>
-      <div className="identify">
-        <img className="photo" src="avatar_default.png" alt="avatar" />
+    <>
+      <PostStyled>
+        <div className="identify">
+          <img className="photo" src="avatar_default.png" alt="avatar" />
 
-        <div className="head">
-          <div>
-            <strong>{postData.user}</strong>
-            <p className="date">{formatDatePost(postData.updated_at)}</p>
-          </div>
-          <div className="option">
-            <button
-              className="openOption"
-              onClick={() => setOpenOptions(!openOptions)}
-            >
-              <MoreHoriz />
-            </button>
-            {openOptions ? renderOptions() : ""}
+          <div className="head">
+            <div>
+              <strong>{postData.name}</strong>
+              <p className="date">{formatDatePost(postData.updated_at)}</p>
+            </div>
+            <div className="option">
+              <button
+                className="openOption"
+                onClick={() => setOpenOptions(!openOptions)}
+              >
+                <MoreHoriz />
+              </button>
+              {openOptions ? renderOptions() : ""}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="type">
-        {renderTypePost(postData.type)}
-        <p>{postData.type}</p>
-      </div>
-      <div className="text">
-        <p>
-          {bigText ? (
-            renderBigText()
-          ) : (
-            <div dangerouslySetInnerHTML={{ __html: postData.text }}></div>
-          )}
-        </p>
-      </div>
-    </PostStyled>
+        <div className="type">
+          {renderTypePost(postData.type)}
+          <p>{postData.type}</p>
+        </div>
+        <div className="text">
+          <p>
+            {bigText ? (
+              renderBigText()
+            ) : (
+              <div dangerouslySetInnerHTML={{ __html: postData.text }}></div>
+            )}
+          </p>
+        </div>
+      </PostStyled>
+      <ModalCreateEditPost
+        show={show}
+        handleClose={handleClose}
+        postInfo={postData}
+      />
+    </>
   );
 }

@@ -6,14 +6,20 @@ export interface IpostsResponseSuccess {
 
 export interface IPost {
   id: string;
-  user: string;
+  name: string;
   updated_at: string;
   type: string;
   text: string;
 }
 
 export interface IPostsParams {
-  user: string;
+  name: string;
+  type: string;
+  text?: string;
+}
+export interface IPutParams {
+  id: number;
+  name: string;
   type: string;
   text?: string;
 }
