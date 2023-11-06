@@ -13,6 +13,10 @@ export const CreatePostStyled = styled.div`
 
   text-align: center;
 
+  @media (max-width: 720px) {
+    margin-bottom: 1rem;
+  }
+
   button {
     background-color: ${theme.colors.primary};
     border: none;

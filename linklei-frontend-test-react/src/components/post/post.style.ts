@@ -10,32 +10,37 @@ export const PostStyled = styled.div`
   margin-bottom: 3rem;
   padding: 1rem;
 
+  @media (max-width: 720px) {
+    width: calc(100vw - 2rem);
+    margin-bottom: 1rem;
+  }
+
   .identify {
     display: flex;
 
     .photo {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
 
-        margin-right: 1rem;
+      margin-right: 1rem;
+    }
+
+    .head {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      .date {
+        font-size: 14px;
       }
-
-      .head {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-
-        .date {
-          font-size: 14px;
-        }
-      }
+    }
   }
 
   .option {
     position: relative;
 
-    button {   
+    button {
       background-color: transparent;
       color: ${theme.colors.light};
       border: none;
@@ -52,7 +57,11 @@ export const PostStyled = styled.div`
       background: ${theme.colors.dark};
       border-radius: 5px;
       border: 1px solid ${theme.colors.black};
-  
+
+      @media (max-width: 720px) {
+        right: 0;
+      }
+
       button {
         display: flex;
         margin-right: 1rem;
@@ -65,7 +74,6 @@ export const PostStyled = styled.div`
       button:first-child {
         margin-bottom: 1rem;
       }
-
     }
   }
 
@@ -77,6 +85,11 @@ export const PostStyled = styled.div`
       text-transform: capitalize;
     }
   }
-  
+
+  .text {
+    img {
+      max-height: 100%;
+      max-width: 100%;
+    }
   }
 `;

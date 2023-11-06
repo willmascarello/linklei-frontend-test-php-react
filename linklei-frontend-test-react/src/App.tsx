@@ -23,8 +23,8 @@ function App() {
 
       <div className="feed">
         {data
-          ? data.map((el, i) => {
-              return <Post {...el} key={i} />;
+          ? data.map((el) => {
+              return <Post {...el} key={el.id} />;
             })
           : "Ainda não há posts publicados"}
       </div>
