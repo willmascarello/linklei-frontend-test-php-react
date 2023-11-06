@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 
 import { IpostsResponseSuccess } from "./posts.interface";

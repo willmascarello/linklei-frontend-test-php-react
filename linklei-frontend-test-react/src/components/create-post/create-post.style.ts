@@ -13,7 +13,7 @@ export const CreatePostStyled = styled.div`
 
   text-align: center;
 
-  @media (max-width: 720px) {
+  @media (max-width: ${theme.responsive.sm}) {
     margin-bottom: 1rem;
   }
 

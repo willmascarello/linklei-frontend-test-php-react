@@ -148,6 +148,7 @@ export default function ModalCreateEditPost(props: IModalCreateEditPostProps) {
                 </Form.Select>
               </Form.Group>
               {/* FIXME: The quill appears only the first time it opens the modal */}
+              {/* TODO: Text field image send to application and save in a local directory */}
               <Form.Group className="mb-3" controlId="textareaedit">
                 <div ref={quillRef} />
               </Form.Group>

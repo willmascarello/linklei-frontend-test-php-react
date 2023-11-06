@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PostStyled } from "./post.style";
-import { IPost, IPutParams } from "../../requests/posts.interface";
+import { IPost } from "../../requests/posts.interface";
 import {
   MoreHoriz,
   Edit,
@@ -71,17 +71,15 @@ export function Post(postData: IPost) {
   function renderBigText() {
     return (
       <div>
-        <p>
-          {readMoreOpen ? (
-            <div dangerouslySetInnerHTML={{ __html: postData.text }}></div>
-          ) : (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: postData.text.substring(0, 500) + "...",
-              }}
-            ></div>
-          )}
-        </p>
+        {readMoreOpen ? (
+          <div dangerouslySetInnerHTML={{ __html: postData.text }}></div>
+        ) : (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: postData.text.substring(0, 500) + "...",
+            }}
+          ></div>
+        )}
         {readMoreOpen ? (
           <Button
             variant="dark"
@@ -129,14 +127,14 @@ export function Post(postData: IPost) {
           {renderTypePost(postData.type)}
           <p>{postData.type}</p>
         </div>
+        {/* TODO: Show only the first image if there is minimized */}
+        {/* TODO: Not counting the image as one of 500 characters */}
         <div className="text">
-          <p>
-            {bigText ? (
-              renderBigText()
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: postData.text }}></div>
-            )}
-          </p>
+          {bigText ? (
+            renderBigText()
+          ) : (
+            <div dangerouslySetInnerHTML={{ __html: postData.text }}></div>
+          )}
         </div>
       </PostStyled>
       <ModalCreateEditPost

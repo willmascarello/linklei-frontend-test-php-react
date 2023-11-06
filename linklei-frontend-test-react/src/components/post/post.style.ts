@@ -10,7 +10,7 @@ export const PostStyled = styled.div`
   margin-bottom: 3rem;
   padding: 1rem;
 
-  @media (max-width: 720px) {
+  @media (max-width: ${theme.responsive.sm}) {
     width: calc(100vw - 2rem);
     margin-bottom: 1rem;
   }
@@ -58,7 +58,7 @@ export const PostStyled = styled.div`
       border-radius: 5px;
       border: 1px solid ${theme.colors.black};
 
-      @media (max-width: 720px) {
+      @media (max-width: ${theme.responsive.sm}) {
         right: 0;
       }
 

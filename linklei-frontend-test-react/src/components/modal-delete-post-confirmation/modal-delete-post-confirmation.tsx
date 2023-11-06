@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "quill/dist/quill.snow.css";
 import { ModalDeletePostConfirmationStyled } from "./modal-delete-post-confirmation.style";
 import { deletePost } from "../../requests/delete-posts.service";
-import { IPost, IPutParams } from "../../requests/posts.interface";
+import { IPost } from "../../requests/posts.interface";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,23 +23,21 @@ export default function ModalDeletePostConfirmation(
   function renderBigText() {
     return (
       <div>
-        <p>
-          {props.postInfo.text !== undefined ? (
-            readMoreOpen ? (
-              <div
-                dangerouslySetInnerHTML={{ __html: props.postInfo.text }}
-              ></div>
-            ) : (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: props.postInfo.text.substring(0, 500) + "...",
-                }}
-              ></div>
-            )
+        {props.postInfo.text !== undefined ? (
+          readMoreOpen ? (
+            <div
+              dangerouslySetInnerHTML={{ __html: props.postInfo.text }}
+            ></div>
           ) : (
-            ""
-          )}
-        </p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: props.postInfo.text.substring(0, 500) + "...",
+              }}
+            ></div>
+          )
+        ) : (
+          ""
+        )}
         {readMoreOpen ? (
           <Button
             variant="dark"
@@ -94,7 +92,7 @@ export default function ModalDeletePostConfirmation(
                 <strong>Tipo: </strong>
                 {props.postInfo?.type}
               </p>
-              <p>
+              <div>
                 <strong>Texto: </strong>
                 {props.postInfo.text !== undefined ? (
                   bigText ? (
@@ -107,7 +105,7 @@ export default function ModalDeletePostConfirmation(
                 ) : (
                   ""
                 )}
-              </p>
+              </div>
               <Button variant="danger" className="float-end" type="submit">
                 Excluir
               </Button>
