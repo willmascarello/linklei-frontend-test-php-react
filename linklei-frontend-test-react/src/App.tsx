@@ -9,10 +9,9 @@ import { getPost } from "./requests/get-posts.service";
 function App() {
   const [data, setData] = useState([] as IPost[]);
 
+  // TODO: Update when creating a new post
   useEffect(() => {
     getPost().then((content) => {
-      console.log(content);
-      console.log("--ver content.data", content.data);
       setData(content.data);
     });
   }, []);

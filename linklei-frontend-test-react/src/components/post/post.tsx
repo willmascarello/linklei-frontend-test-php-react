@@ -30,9 +30,19 @@ export function Post(postData: IPost) {
     );
   }
 
-  function formatDatePost(date: string) {
-    // TODO: 2023-11-05 19:58:35 to Publicado em 5 de novembro de 2023 às 19:58
-    return date;
+  function formatDatePost(time: string) {
+    // convert 2023-11-05 19:58:35 to Publicado em 5 de novembro de 2023 às 19:58
+    const date = new Date(time).toLocaleDateString("pt-BR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const hour = new Date(time).toLocaleTimeString("pt-BR", {
+      hour: "numeric",
+      minute: "numeric",
+    });
+
+    return `Publicado em ${date} às ${hour}`;
   }
 
   function renderTypePost(param: string) {
